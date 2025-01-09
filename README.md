@@ -34,29 +34,35 @@ Copiar código
 expo start
 Abre la app en un dispositivo o emulador:
 
-Usa la app Expo Go en tu dispositivo móvil para escanear el código QR.
+# Expo SQLite Demo
+
+Usa la app **Expo Go** en tu dispositivo móvil para escanear el código QR.  
 O selecciona un emulador desde la interfaz de Expo.
-Cómo Usar
-Abre la aplicación en tu dispositivo o emulador.
-Prueba las funcionalidades:
-Agregar datos a la base de datos SQLite.
-Leer los datos almacenados.
-Actualizar o eliminar registros.
-Estructura del Proyecto
-bash
-Copiar código
+
+## Cómo Usar
+
+1. Abre la aplicación en tu dispositivo o emulador.
+2. Prueba las funcionalidades:
+   - **Agregar datos** a la base de datos SQLite.
+   - **Leer los datos** almacenados.
+   - **Actualizar o eliminar registros**.
+
+## Estructura del Proyecto
+
+```bash
 expo-sqlite-demo/
-├── App.js                                # Archivo principal de la app
-├── db/                                   # Configuración de la base de datos SQLite
-│   └── database.js                       # Conexión y operaciones con SQLite
-├── utils/                                # Utilidades auxiliares
-│   ├── handleExportToJSON.js             # Funcion para exportar y compartir datos en un archivo JSON
-│   ├── handleImportFromJSON.js           # Funcion para importar datos desde un archivo JSON
-│   ├── handleDeleteWithConfirmation.js   # Funcion para manejar eliminación con confirmación
-│   └── shareFile.js                      # Función para compartir archivos
-├── assets/                               # Recursos como imágenes o fuentes
-├── package.json                          # Dependencias del proyecto
-└── README.md                             # Este archivo
-Notas
+├── App.js               # Archivo principal de la app
+├── db/                  # Configuración de la base de datos SQLite
+│   └── database.js      # Conexión y operaciones con SQLite
+├── utils/               # Utilidades auxiliares
+│   ├── handleExportToJSON.js        # Función para exportar y compartir datos en un archivo JSON
+│   ├── handleImportFromJSON.js      # Función para importar datos desde un archivo JSON
+│   ├── handleDeleteWithConfirmation.js # Función para manejar eliminación con confirmación
+│   └── shareFile.js     # Función para compartir archivos
+├── assets/              # Recursos como imágenes o fuentes
+├── package.json         # Dependencias del proyecto
+└── README.md            # Este archivo
+```
+## Notas
 SQLite: La base de datos SQLite es local al dispositivo. Si reinstalas la app, los datos se perderán.
 Compatibilidad: Este proyecto funciona en Android e iOS, pero requiere un dispositivo o emulador que soporte Expo Go.
