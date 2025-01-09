@@ -24,14 +24,14 @@ Asegúrate de tener instalados los siguientes programas antes de comenzar:
    cd expo-sqlite-demo
 Instala las dependencias:
 
-bash
-Copiar código
+```bash
 npm install
+```
 Inicia la aplicación:
 
-bash
-Copiar código
-expo start
+```bash
+npx expo start
+```
 Abre la app en un dispositivo o emulador:
 
 # Expo SQLite Demo
