@@ -1,0 +1,28 @@
+{
+  "name": "expo-sqlite-demo",
+  "license": "0BSD",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~52.0.23",
+    "expo-document-picker": "~13.0.1",
+    "expo-file-system": "~18.0.6",
+    "expo-media-library": "~17.0.4",
+    "expo-sharing": "~13.0.0",
+    "expo-sqlite": "~15.0.5",
+    "expo-status-bar": "~2.0.0",
+    "react": "18.3.1",
+    "react-native": "0.76.5",
+    "react-native-fs": "^2.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
