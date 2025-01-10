@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet, } from "react-native";
+import { ScrollView, View, Text, TextInput, Button, StyleSheet, } from "react-native";
 import * as SQLite from "expo-sqlite";
 import { handleSaveInDB, handleReadFromDB, checkIfTableExists, createTable } from "./db/database.js";
 import { handleImportFromJSON } from "./utils/handleImportFromJSON.js";
@@ -55,7 +55,8 @@ export default function App() {
 				onChangeText={setAge}
 			/>
 
-			<Button title="Guardar" onPress={() => handleSaveInDB(db, name, age)} />
+			<Button title="Guardar" onPress={() => handleSaveInDB(db, null, name, age)} />
+
 
 			<Button title="Leer Datos de la DB" onPress={async () => {
 				const result = await handleReadFromDB(db)
@@ -79,21 +80,29 @@ export default function App() {
 				</Text>
 			)}
 
-			{dataRead && (
-				<Text style={styles.savedData}>
-					Los datos leídos son: {JSON.stringify(dataRead)}
-				</Text>
-			)}
+			<ScrollView style={styles.scrollView}>
+				{dataRead && (
+					<Text style={styles.savedData}>
+						Los datos leídos son: {JSON.stringify(dataRead)}
+					</Text>
+				)}
+			</ScrollView>
 		</View>
 	);
 }
+
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 20,
+		padding: 50,
+		paddingBottom: 10
+	},
+	formContainer: {
+		marginBottom: 30,
+		alignItems: "center",
 	},
 	title: {
 		fontSize: 24,
@@ -108,8 +117,16 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		borderRadius: 5,
 	},
-	savedData: {
+	scrollView: {
+		width: "100%",
+		height: 50,
+		borderWidth: .5,
+		borderColor: "#ccc",
+		borderRadius: 5,
+		padding: 2,
 		marginTop: 20,
+	},
+	savedData: {
 		fontSize: 16,
 		fontWeight: "bold",
 	},

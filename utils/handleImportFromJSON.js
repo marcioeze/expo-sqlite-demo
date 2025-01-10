@@ -36,11 +36,8 @@ export const handleImportFromJSON = async (db) => {
             const json = JSON.parse(fileContent);
             /*console.log('Los datos json son: ', json);*/
 
-            // Extraer los datos del primer objeto JSON (suponiendo un formato específico)
-            const { name: importedName, age: importedAge } = json[0];
-
             // Guardar los datos importados en la base de datos
-            await handleSaveInDB(db, importedName, importedAge);
+            await handleSaveInDB(db, json, null, null);
 
         } catch (jsonParseError) {
             // Mostrar una alerta si el archivo no contiene un JSON válido

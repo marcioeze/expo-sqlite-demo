@@ -87,19 +87,42 @@ export const insertUser = async (db, name, age) => {
     }
 };
 
-export const handleSaveInDB = async (db, inputName, inputAge) => {
-    if (inputName.trim() === '') {  // Asegurarse de que no sea solo espacio en blanco
-        Alert.alert('El campo nombre no puede estar vacío');
-        return;
-    }
-
-    if (inputAge === '' || Number.isNaN(Number(inputAge)) || Number(inputAge) <= 0) {
-        Alert.alert('El campo edad debe ser un número mayor que 0');
-        return;
-    }
+export const handleSaveInDB = async (db, json, inputName, inputAge) => {
     try {
-        await insertUser(db, inputName, inputAge); // Guardar el usuario
-        Alert.alert(`Usuario ${inputName}, ${inputAge} insertado correctamente.`);
+        // verificamos si vamos a guardar desde un archivo json o no verificando si json existe
+        if (!json) {
+
+            if (inputName.trim() === '') {  // Asegurarse de que no sea solo espacio en blanco
+                Alert.alert('El campo nombre no puede estar vacío');
+                return;
+            }
+
+            if (inputAge === '' || Number.isNaN(Number(inputAge)) || Number(inputAge) <= 0) {
+                Alert.alert('El campo edad debe ser un número mayor que 0');
+                return;
+            }
+            await insertUser(db, inputName, inputAge); // Guardar el usuario
+            Alert.alert(`Usuario ${inputName}, ${inputAge} insertado correctamente.`);
+
+            return;
+        }
+
+        if (json.length === 0) {
+            Alert.alert("No hay datos para guardar. El JSON esta vacio!!!!!");
+            return;
+        }
+        // Insertar cada usuario
+        // recorremos todo el array y por cada usuario que exista en el json lo guardamos en la base de datos en la tabla users
+        for (const user of json) {
+            try {
+                await insertUser(db, user.name, user.age); // Guardar el usuario
+            } catch (error) {
+                console.error(`Error al insertar el usuario ${user.name}:`, error.message);
+                /*console.log('El error es: ', error.stack)*/
+            }
+        }
+        Alert.alert(`${json.length} usuarios insertados correctamente.`);
+
     } catch (error) {
         Alert.alert('Error al guardar los datos, revisa la consola para más detalles');
         console.error("Error al guardar los datos:", error); // Mostrar el error para debugging
